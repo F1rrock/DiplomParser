@@ -8,8 +8,8 @@ import 'package:practise_parser/features/parser/data/datasources/remote_datasour
 import 'package:practise_parser/features/parser/data/mappers/joke_mapper.dart';
 import 'package:practise_parser/features/parser/data/repositories/joke_repository.dart';
 import 'package:practise_parser/features/parser/domain/repositories/entity_repository.dart';
-import 'package:practise_parser/features/parser/domain/use_cases/get_list_of_random_entities.dart';
-import 'package:practise_parser/features/parser/domain/use_cases/search_entities_by_category.dart';
+import 'package:practise_parser/features/parser/domain/use_cases/get_list_of_entities.dart';
+import 'package:practise_parser/features/parser/domain/use_cases/search_entities.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -21,12 +21,12 @@ Future<void> init() async {
 
   // Use cases
   serviceLocator.registerLazySingleton(
-    () => GetListOfRandomEntities(
+    () => GetListOfEntities(
       repository: serviceLocator(),
     ),
   );
   serviceLocator.registerLazySingleton(
-    () => SearchEntitiesByCategory(
+    () => SearchEntities(
       repository: serviceLocator(),
     ),
   );

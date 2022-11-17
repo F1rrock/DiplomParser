@@ -6,10 +6,10 @@ import 'package:practise_parser/core/use_cases/use_case.dart';
 import '../entities/entity.dart';
 import '../repositories/entity_repository.dart';
 
-class GetListOfRandomEntities implements UseCase<List<ObjectEntity>, NoParams> {
+class GetListOfEntities implements UseCase<List<ObjectEntity>, NoParams> {
   final EntityRepository repository;
 
-  const GetListOfRandomEntities({
+  const GetListOfEntities({
     required this.repository
   });
 

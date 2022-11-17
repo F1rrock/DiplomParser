@@ -6,10 +6,10 @@ import 'package:practise_parser/core/use_cases/use_case.dart';
 import '../entities/entity.dart';
 import '../repositories/entity_repository.dart';
 
-class SearchEntitiesByCategory implements UseCase<List<ObjectEntity>, Params> {
+class SearchEntities implements UseCase<List<ObjectEntity>, Params> {
   final EntityRepository repository;
 
-  const SearchEntitiesByCategory({
+  const SearchEntities({
     required this.repository
   });
 
