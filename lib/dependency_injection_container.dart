@@ -5,11 +5,13 @@ import 'package:practise_parser/core/network/network_info.dart';
 import 'package:practise_parser/features/parser/data/datasources/joke_local_datasource.dart';
 import 'package:practise_parser/features/parser/data/datasources/joke_remote_datasource.dart';
 import 'package:practise_parser/features/parser/data/datasources/remote_datasources/joke_remote_datasource_from_url.dart';
+import 'package:practise_parser/features/parser/data/mappers/joke_attributes_mapper.dart';
 import 'package:practise_parser/features/parser/data/mappers/joke_mapper.dart';
 import 'package:practise_parser/features/parser/data/repositories/joke_repository.dart';
 import 'package:practise_parser/features/parser/domain/repositories/entity_repository.dart';
 import 'package:practise_parser/features/parser/domain/use_cases/get_list_of_entities.dart';
 import 'package:practise_parser/features/parser/domain/use_cases/search_entities.dart';
+import 'package:practise_parser/features/parser/presentation/ploc/entity_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,6 +20,13 @@ import 'features/parser/data/datasources/local_datasources/joke_local_datasource
 final serviceLocator = GetIt.instance;
 
 Future<void> init() async {
+  // PLOC (BLOC)
+  serviceLocator.registerFactory(
+    () => EntityBloc(
+      getEntities: serviceLocator(),
+      searchEntities: serviceLocator(),
+    ),
+  );
 
   // Use cases
   serviceLocator.registerLazySingleton(
@@ -41,17 +50,21 @@ Future<void> init() async {
   );
 
   // Data sources
-  serviceLocator.registerLazySingleton<JokeRemoteDataSource>(
+    serviceLocator.registerLazySingleton<JokeRemoteDataSource>(
     () => JokeRemoteDataSourceFromUrl(
       client: serviceLocator(),
-      parser: const JokeMapper(),
+      parser: const JokeMapper(
+        attributesMapper: JokeAttributesMapper(),
+      ),
     ),
   );
 
   serviceLocator.registerLazySingleton<JokeLocalDataSource>(
     () => JokeLocalDataSourceFromSharedPrefs(
       sharedPreferences: serviceLocator(),
-      parser: const JokeMapper(),
+      parser: const JokeMapper(
+        attributesMapper: JokeAttributesMapper(),
+      ),
     ),
   );
 

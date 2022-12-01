@@ -1,0 +1,17 @@
+{
+  "category": "Misc",
+  "type": "twopart",
+  "setup": "What do you call a bird sitting with their legs spread?",
+  "delivery": "A prostitweety.",
+  "flags": {
+    "nsfw": true,
+    "religious": false,
+    "political": false,
+    "racist": false,
+    "sexist": false,
+    "explicit": true
+  },
+  "id": 224,
+  "safe": false,
+  "lang": "en"
+}

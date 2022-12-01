@@ -1,6 +1,6 @@
-import 'package:practise_parser/features/parser/data/models/joke_model.dart';
+import 'package:practise_parser/features/parser/domain/entities/entity.dart';
 
 abstract class JokeLocalDataSource {
-  Future<List<JokeModel>> getLastJokesFromCache();
-  Future<void> jokesToCache(List<JokeModel> jokes);
+  Future<List<ObjectEntity>> getLastJokesFromCache();
+  Future<void> jokesToCache(List<ObjectEntity> jokes);
 }

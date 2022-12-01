@@ -1,6 +1,6 @@
-import '../models/joke_model.dart';
+import '../../domain/entities/entity.dart';
 
 abstract class JokeRemoteDataSource {
-  Future<List<JokeModel>> getJokes();
-  Future<List<JokeModel>> searchJokes(String query);
+  Future<List<ObjectEntity>> getJokes();
+  Future<List<ObjectEntity>> searchJokes(String query);
 }

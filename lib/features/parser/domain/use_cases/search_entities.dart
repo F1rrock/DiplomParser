@@ -15,7 +15,7 @@ class SearchEntities implements UseCase<List<ObjectEntity>, Params> {
 
   @override
   Future<Either<Failure, List<ObjectEntity>>> call(Params param) async {
-    return await repository.searchEntitiesByCategory(param.query);
+    return await repository.searchEntities(param.query);
   }
 }
 

@@ -5,5 +5,5 @@ import '../entities/entity.dart';
 
 abstract class EntityRepository {
   Future<Either<Failure, List<ObjectEntity>>> getListOfRandomEntities();
-  Future<Either<Failure, List<ObjectEntity>>> searchEntitiesByCategory(String query);
+  Future<Either<Failure, List<ObjectEntity>>> searchEntities(String query);
 }
