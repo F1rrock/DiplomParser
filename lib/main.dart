@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practise_parser/features/parser/presentation/pages/entities_page.dart';
 import 'dependency_injection_container.dart' as dependency_injection;
-
-const serverFailureMessage = 'server error';
-const cacheFailureMessage = 'cache error';
+import 'dependency_injection_container.dart';
+import 'package:practise_parser/features/parser/presentation/ploc/bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blueAccent,
       ),
-      home: const EntitiesPage(),
+      home: BlocProvider(
+        create: (_) =>
+            serviceLocator<EntityBloc>()..add(const GetListOfEntitiesEvent()),
+        child: const EntitiesPage(),
+      ),
     );
   }
 }

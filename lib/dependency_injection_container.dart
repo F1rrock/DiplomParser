@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:practise_parser/core/network/concrete/network_info_from_checker.dart';
 import 'package:practise_parser/core/network/network_info.dart';
+import 'package:practise_parser/core/util/input_checker.dart';
 import 'package:practise_parser/features/parser/data/datasources/joke_local_datasource.dart';
 import 'package:practise_parser/features/parser/data/datasources/joke_remote_datasource.dart';
 import 'package:practise_parser/features/parser/data/datasources/remote_datasources/joke_remote_datasource_from_url.dart';
@@ -25,6 +26,7 @@ Future<void> init() async {
     () => EntityBloc(
       getEntities: serviceLocator(),
       searchEntities: serviceLocator(),
+      inputChecker: serviceLocator(),
     ),
   );
 
@@ -69,6 +71,7 @@ Future<void> init() async {
   );
 
   // Core
+  serviceLocator.registerLazySingleton(() => InputChecker());
   serviceLocator.registerLazySingleton<NetworkInfo>(
     () => NetworkInfoFromChecker(
       connectionChecker: serviceLocator(),

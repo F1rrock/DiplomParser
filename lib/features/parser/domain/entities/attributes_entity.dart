@@ -5,4 +5,7 @@ class AttributesEntity extends Equatable {
   List<Object> get props => [];
 
   const AttributesEntity();
+
+  @override
+  String toString();
 }

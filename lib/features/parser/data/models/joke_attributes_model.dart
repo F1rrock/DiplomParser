@@ -10,13 +10,13 @@ class JokeAttributesModel extends AttributesEntity {
 
   @override
   List<Object> get props => [
-    nsfw,
-    religious,
-    political,
-    racist,
-    sexist,
-    explicit,
-  ];
+        nsfw,
+        religious,
+        political,
+        racist,
+        sexist,
+        explicit,
+      ];
 
   const JokeAttributesModel({
     required this.nsfw,
@@ -26,4 +26,19 @@ class JokeAttributesModel extends AttributesEntity {
     required this.sexist,
     required this.explicit,
   });
+
+  @override
+  String toString() {
+    var response = '';
+    response = nsfw ? '${response}nsfw; ' : response;
+    response = religious ? '${response}religious; ' : response;
+    response = political ? '${response}political; ' : response;
+    response = racist ? '${response}racist; ' : response;
+    response = sexist ? '${response}sexist; ' : response;
+    response = explicit ? '${response}explicit; ' : response;
+    return 'type: ${response == '' ? 'simple' : response.substring(
+        0,
+        response.length - 2,
+      )}';
+  }
 }

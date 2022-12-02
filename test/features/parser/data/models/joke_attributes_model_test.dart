@@ -11,12 +11,24 @@ void main() {
     sexist: false,
     explicit: false,
   );
+  const testAttributesString = 'type: simple';
 
   test(
     'should be a subclass of ObjectEntity',
     () async {
-      //assert
+      // assert
       expect(testJokeAttributesModel, isA<AttributesEntity>());
+    },
+  );
+
+  test(
+    'should successfully converts to attributes string',
+    () async {
+      // assert
+      expect(
+        testJokeAttributesModel.toString(),
+        equals(testAttributesString),
+      );
     },
   );
 }

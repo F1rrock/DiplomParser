@@ -18,15 +18,15 @@ class EntityList extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () async {
-        context.read<EntityBloc>().add(const GetListOfEntitiesEvent());
+        final bloc = context.read<EntityBloc>();
+        bloc.add(bloc.lastQuery);
       },
       child: ListView.separated(
         padding: const EdgeInsets.all(8.0),
         itemBuilder: (_, index) {
           return ListTile(
             title: EntityCard(
-              entity:
-                  list[index],
+              entity: list[index],
             ),
           );
         },

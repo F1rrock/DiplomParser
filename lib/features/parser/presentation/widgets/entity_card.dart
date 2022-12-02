@@ -17,7 +17,7 @@ class EntityCard extends StatelessWidget {
         horizontal: 4.0,
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             entity.name,
@@ -31,25 +31,12 @@ class EntityCard extends StatelessWidget {
           const SizedBox(
             height: 4.0,
           ),
-          Row(
-            children: <Widget>[
-              const SizedBox(
-                width: 5.0,
-              ),
-              Text(
-                'category: ${entity.category}',
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
           const SizedBox(
-            height: 10.0,
+            height: 8.0,
           ),
           Text(
             entity.description,
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.justify,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 15,
@@ -57,7 +44,37 @@ class EntityCard extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 4.0,
+            height: 8.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'category: ${entity.category}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 13.0,
+                    ),
+                  ),
+                  Text(
+                    entity.attributes.toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 13.0,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: 5.0,
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 6.0,
           ),
         ],
       ),
